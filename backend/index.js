@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const pg = require('pg');
 
 const express = require('express');
@@ -8,14 +10,13 @@ const cors = require('cors')
 const port=3000;
 
 const pool = new pg.Pool({
-    user: 'secadv',
-    host: 'db',
-    database: 'pxldb',
-    password: 'ilovesecurity',
-    port: 5432,
-    connectionTimeoutMillis: 5000
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PORT,
+  connectionTimeoutMillis: 5000
 })
-
 console.log("Connecting...:")
 
 app.use(cors());
